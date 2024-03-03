@@ -1,1 +1,1 @@
-'W'Key.shift'h''a''t'Key.space'i''s'Key.space'a'Key.space'K'Key.shift'e''y''l''o''g''g''e''r'Key.enter
+'A'Key.shift'p''p''l''i''c''a''t''i''o''n'Key.space'o''f'Key.space't''k''i''n''t''e''r'Key.space'i''n'Key.space'p''y''t''h''o''n'Key.enter'\x17'Key.ctrl_l
